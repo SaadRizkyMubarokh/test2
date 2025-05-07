@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUR BRANCH -</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 14px 40px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-weight: 700;
+            font-size: 28px;
+            color: #ECC333;
+        }
+
+        .header img {
+            width: 70px;
+            object-fit: contain;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: #ECC333;
+        }
+
+
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .banner-map {
+            text-align: center;
+            padding: 12px;
+            font-size: 20px;
+        }
+
+        .banner-map>p {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .search-loc {
+            margin: 30px;
+        }
+
+        .loc1 {
+            display: flex;
+            flex-wrap: wrap;
+            /* Biar otomatis turun ke bawah */
+            align-items: flex-start;
+            gap: 10px;
+            /* Kasih jarak biar gak dempet */
+            font-size: 16px;
+        }
+
+        .loc1>p {
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        #search-container {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+        }
+
+        #search {
+            flex: 1;
+            padding: 8px;
+            min-width: 200px;
+
+        }
+
+        #findnow {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        /* location carousel*/
+        .carousel {
+            display: flex;
+            gap: 20px;
+            padding: 35px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-grid {
+            display: flex;
+            gap: 20px;
+        }
+
+        .loc1-carou {
+            flex: 0 0 auto;
+            width: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f8f9fa;
+            text-align: left;
+            scroll-snap-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .loc1-carou .fuel-name {
+            font-weight: bold;
+        }
+
+        .loc1-carou .dommana {
+            display: flex;
+        }
+
+        .dommana img {
+            width: 24px;
+            object-fit: contain;
+        }
+
+        .view-location {
+            color: #ECC333;
+        }
+
+        footer {
+            background: #E5B628;
+            color: #fff;
+            text-align: center;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 70px;
+
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .contact-info {
+            text-align: left;
+            max-width: 300px;
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .about {
+            text-align: left;
+            max-width: 1000px;
+            margin-top: 30px;
+
+        }
+
+        .about p {
+            font-size: 14px;
+            color: #f5f5f5;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin: 20px;
+
+        }
+
+        .social-icons img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
+
+        @media (max-width: 320px) {
+            body {
+                font-size: 14px;
+                overflow-x: hidden;
+                margin: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* HEADER */
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                /* Pindahkan hamburger ke kanan */
+                padding: 10px 14px;
+                position: relative;
+                width: 93%;
+            }
+
+            .header p {
+                padding: 5px 0;
+                font-size: 15px;
+            }
+
+            .header img {
+                height: 50px;
+                width: 50px;
+            }
+
+            /* Navigasi */
+            .nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 90px;
+                background: white;
+                text-align: right;
+                padding: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                z-index: 10;
+                /* Pastikan tetap di atas */
+            }
+
+            /* Pastikan bisa diklik */
+            .nav ul {
+                flex-direction: column;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                position: relative;
+                z-index: 15;
+                /* Naikin z-index */
+            }
+
+            .hamburger {
+                font-size: 24px;
+                cursor: pointer;
+                margin-left: auto;
+                z-index: 2;
+            }
+
+            /* Checkbox Hack */
+            #menu-toggle {
+                display: none;
+            }
+
+            #menu-toggle:checked+.hamburger+.nav {
+                display: block;
+            }
+
+            .banner-map {
+                font-size: 16px;
+                padding: 8px;
+            }
+
+            .search-loc {
+                margin: 20px;
+            }
+
+            .loc1 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .loc1>p {
+                margin: 0;
+                white-space: normal;
+                /* Biar teks bisa turun ke bawah */
+                word-wrap: break-word;
+                /* Supaya kata panjang bisa pindah baris */
+                overflow-wrap: break-word;
+                /* Alternatif untuk memastikan tidak overflow */
+            }
+
+            #map {
+                height: 500px;
+            }
+
+            #map,
+            .carousel-container {
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+
+            #search-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            #search {
+                min-width: unset;
+                width: 100%;
+            }
+
+            #findnow {
+                width: 100%;
+            }
+
+            .carousel {
+                gap: 10px;
+                width: 90%;
+            }
+
+            .carousel-grid {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .loc1-carou {
+                width: 200px;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            /* FOOTER */
+            footer {
+                background: #E5B628;
+                color: #fff;
+                padding: 15px;
+                text-align: center;
+                width: 93%;
+            }
+
+            .footer-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 100%;
+                padding: 0 5px;
+            }
+
+            .contact-info,
+            .about {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .contact-info h3 {
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+
+            .about p {
+                font-size: 10px;
+                margin: 0 10px;
+                line-height: 1.5;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin: 10px 0;
+            }
+
+            .social-icons img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .footer-bottom {
+                font-size: 9px;
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.1);
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img src="image 2.png">
+        <p>WIZZII</p>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">&#9776;</label>
+        <nav class="nav">
+            <ul>
+                <li><a href="Homepage.html">Home</a></li>
+                <li><a href="#">Location</a></li>
+                <li><a href="News.html">News</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </nav>
+        <label for="menu-toggle" class="overlay"></label>
+    </header>
+
+    <div class="banner-map">
+        <p>We're global to privilege you</p>
+        Find the nearest gas station store, and don't forget to visit!
+    </div>
+
+    <div id="map"></div>
+
+    <div class="search-loc">
+        <div class="loc1">
+            <p>Your Location: Jl. Anggur 21, Kecamatan Tija Kota Depok</p>
+            <div id="search-container">
+                <input type="text" id="search" placeholder="Cari SPBU (misal: Kuningan)">
+                <button id="findnow">Find a gas station!</button>
+            </div>
+        </div>
+
+
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-grid">
+                    <div class="loc1-carou">
+                        <p class="fuel-name">Sukatani Gas Station</p>
+                        <div class="dommana">
+                            <img src="location_on.png">
+                            <p>Jln. Salak IV, Kota Depok</p>
+                        </div>
+
+                        <div class="dommana">
+                            <img src="Phone call.png">
+                            <p>+62 8312 0092 8278</p>
+                        </div>
+                        <a href="https://maps.google.com?q=Sukatani+Gas+Station" target="_blank"
+                            class="view-location">View Location</a>
+                    </div>
+                    <div class="loc1-carou">
+                        <p class="fuel-name">SPBU Transyogi</p>
+                        <div class="dommana">
+                            <img src="location_on.png">
+                            <p>Jl. Alternatif Cibubur</p>
+                        </div>
+                        <div class="dommana">
+                            <img src="Phone call.png">
+                            <p>+62 8123 4567 890</p>
+                        </div>
+                        <a href="https://maps.google.com?q=SPBU+Transyogi" target="_blank" class="view-location">View
+                            Location</a>
+                    </div>
+                    <div class="loc1-carou">
+                        <p class="fuel-name">SPBU Margonda</p>
+                        <div class="dommana">
+                            <img src="location_on.png">
+                            <p>Jl. Margonda Raya</p>
+                        </div>
+                        <div class="dommana">
+                            <img src="Phone call.png">
+                            <p>+62 8134 5678 901 </p>
+                        </div>
+                        <a href=" https://maps.google.com?q=SPBU+Margonda" target="_blank" class="view-location">View
+                            Location</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>+62 2726 2726 162</p>
+                <p>wizzi.energy@gmail.com</p>
+            </div>
+            <div class="about">
+                <p>Wizzii is an innovative fuel brand that offers a wide range of gasoline and diesel with the latest
+                    technology to meet the needs of modern vehicles. With a focus on efficiency, performance, and
+                    sustainability, Wizzii delivers high-quality fuels designed to provide cleaner combustion, optimal
+                    acceleration, and maintain engine durability for longer. In addition, Wizzii is also committed to
+                    green energy solutions through biofuel variants that reduce carbon emissions without compromising
+                    vehicle performance.</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Wizzii. All Rights Reserved | Powered by Innovation & Sustainability</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map').fitBounds([
+                [-6.9, 106.3],
+                [-5.9, 107.1]
+            ]);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            // Data SPBU
+            var spbuLocations = [
+                { name: "SPBU Wizzi Sudirman", lat: -6.2146, lng: 106.8216 },
+                { name: "SPBU Wizzi Kemang", lat: -6.2607, lng: 106.8142 },
+                { name: "SPBU Wizzi Kuningan", lat: -6.2265, lng: 106.8300 },
+                { name: "SPBU Wizzi Juanda", lat: -6.377749, lng: 106.831620 },
+                { name: "SPBU Wizzi Salemba", lat: -6.1977, lng: 106.8496 },
+                { name: "SPBU Wizzi Pramuka", lat: -6.1972, lng: 106.8578 }
+            ];
+
+            // Tambahkan marker SPBU
+            var markers = {};
+            spbuLocations.forEach(function (loc) {
+                var marker = L.marker([loc.lat, loc.lng])
+                    .addTo(map)
+                    .bindPopup(`<b>${loc.name}</b>`);
+                markers[loc.name.toLowerCase()] = { marker, lat: loc.lat, lng: loc.lng };
+            });
+
+            // Event klik tombol cari
+            $('#findnow').on('click', function () {
+                var query = $('#search').val().toLowerCase().trim();
+                if (!query) {
+                    alert("Masukkan nama SPBU terlebih dahulu.");
+                    return;
+                }
+
+                var foundKey = Object.keys(markers).find(key => key.includes(query));
+                if (foundKey) {
+                    var found = markers[foundKey];
+                    map.setView([found.lat, found.lng], 15);
+                    found.marker.openPopup();
+                } else {
+                    alert("SPBU tidak ditemukan.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

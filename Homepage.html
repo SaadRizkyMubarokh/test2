@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIZZII - For World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #f8f8f8;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 14px 40px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-weight: 700;
+            font-size: 28px;
+            color: #ECC333;
+        }
+
+        .header img {
+            width: 70px;
+            object-fit: contain;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: #ECC333;
+        }
+
+        /* PROMO SECTION */
+        .promo {
+            position: relative;
+            width: 100vw;
+            height: 90vh;
+            display: block;
+            color: white;
+            overflow: hidden;
+        }
+
+        .promo img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(50%);
+        }
+
+        .promo-text {
+            position: absolute;
+            top: 25%;
+            /* Geser ke bawah 25% dari tinggi container */
+            left: 15%;
+            /* Geser ke kanan 15% dari lebar container */
+            width: 50%;
+        }
+
+        .promo-text h1 {
+            font-size: 50px;
+            font-weight: bold;
+            top: 25%;
+            left: 15%;
+        }
+
+        .promo-text p {
+            font-size: 20px;
+            margin-top: 10px;
+            top: 35%;
+            left: 28%;
+        }
+
+        /* KEY FACTS */
+        .content {
+            display: flex;
+            position: relative;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 2px;
+            margin-top: 50px;
+            margin-left: 90px;
+            margin-bottom: 90px;
+        }
+
+        .content img {
+            max-width: 70%;
+            height: auto;
+            object-fit: cover;
+            margin-left: auto;
+        }
+
+        .content div {
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .intimate2 {
+            font-weight: bold;
+            margin-top: 34px;
+            padding: 3px;
+            font-size: 29px;
+        }
+
+        .intimate {
+            font-size: 40px;
+            margin: 3px;
+            font-weight: bold;
+            padding: auto;
+            color: #ECC333;
+        }
+
+        .intimate1 {
+            font-size: 18px;
+            color: #666;
+            padding: 2px;
+            text-align: justify;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            gap: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .info1 {
+            text-align: left;
+            white-space: nowrap;
+            font-weight: bold;
+            color: #ECC333;
+            margin: 5px 0;
+        }
+
+        .info2 {
+            text-align: left;
+            white-space: nowrap;
+            margin: 5px 0;
+            padding-left: 5px;
+        }
+
+
+
+        /* BACKGROUND */
+        .fuel-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .fuel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+
+            height: 100vh;
+
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .fuel-bg::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 0.5 = 50% transparan */
+            z-index: 0;
+        }
+
+        /* FLOATING STYLE */
+        .ngambang {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .text {
+            position: relative;
+            max-width: fit-content;
+            width: 100%;
+            right: inherit;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .text h2 {
+            font-weight: bold;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-align: left;
+            margin-right: 300px;
+        }
+
+        .text .sub-text {
+            font-size: 20px;
+            color: white;
+            text-align: left;
+            margin-left: 900px;
+            margin-bottom: 50px;
+        }
+
+        /* CARD CONTAINER */
+        .type-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        /* FUEL CARD */
+        .typenya {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            scroll-snap-align: start;
+        }
+
+        .type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .type1 {
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+            flex: 1;
+            justify-content: space-around;
+            text-align: left;
+        }
+
+        .type1 p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .ron {
+            font-size: 24px;
+            font-weight: bold;
+            background-image: url(Rectangle\ merah.png);
+            background-size: cover;
+            background-position: center;
+            max-height: fit-content;
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+
+        .typenya p {
+            font-size: 16px;
+            color: black;
+            margin-top: 10px;
+            text-align: justify;
+        }
+
+        footer {
+            background: #E5B628;
+            color: #fff;
+            text-align: center;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 70px;
+
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .contact-info {
+            text-align: left;
+            max-width: 300px;
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .about {
+            text-align: left;
+            max-width: 1000px;
+            margin-top: 30px;
+
+        }
+
+        .about p {
+            font-size: 14px;
+            color: #f5f5f5;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin: 20px;
+
+        }
+
+        .social-icons img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
+
+        /* tablet */
+
+        @media (max-width: 768px) {
+
+            /* General */
+            body {
+                font-size: 14px;
+                overflow-x: hidden;
+                /* Fix scroll horizontal */
+            }
+
+            .container {
+                max-width: 100%;
+                overflow-x: hidden;
+                /* Mencegah geser kanan */
+            }
+
+            /* HEADER */
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 14px 20px;
+            }
+
+            .header p {
+                font-size: 24px;
+            }
+
+            .header img {
+                width: 60px;
+            }
+
+            .nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                /* Fix biar menu nggak keluar */
+            }
+
+            .nav a {
+                font-size: 14px;
+            }
+
+            /* PROMO SECTION */
+            .promo {
+                width: 100%;
+                height: 70vh;
+                overflow: hidden;
+            }
+
+            .promo img {
+                width: 100vw;
+                height: 100%;
+            }
+
+            .promo-text {
+                width: 90%;
+                left: 5%;
+                top: 20%;
+            }
+
+            .promo-text h1 {
+                font-size: 36px;
+            }
+
+            .promo-text p {
+                font-size: 16px;
+            }
+
+            /* KEY FACTS */
+            .content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin: 30px auto;
+                padding: 10px;
+            }
+
+            .content img {
+                display: none;
+            }
+
+            .intimate,
+            .intimate2 {
+                font-size: 24px;
+            }
+
+            .intimate1 {
+                font-size: 14px;
+            }
+
+            .info {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 kolom biar tetap 1 pair */
+                gap: 5px 10px;
+                /* Jarak antar elemen */
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            /* BACKGROUND */
+            .fuel-section {
+                min-height: 70vh;
+            }
+
+            .text {
+                padding: 8px 0;
+                /* Sedikit lebih kecil */
+            }
+
+            .text h2 {
+                font-size: 16px;
+                /* Ukuran lebih kecil biar pas di layar kecil */
+                max-width: 90%;
+                justify-content: center;
+                text-align: center;
+                line-height: 1.3;
+                margin-left: 110px;
+                left: 29%;
+            }
+
+
+            .text .sub-text {
+                font-size: 16px;
+                text-align: center;
+                margin: 5px auto;
+                max-width: 80%;
+                line-height: 1.3;
+            }
+
+            .footer-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .type-container {
+                display: flex;
+                gap: 20px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-left: 340px;
+                padding-bottom: 10px;
+            }
+
+
+            .typenya {
+                flex: 0 0 60%;
+                max-width: 300px;
+                scroll-snap-align: center;
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .ron {
+                font-size: 20px;
+            }
+
+            /* FOOTER */
+            footer {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .footer-container {
+                max-width: 100%;
+                padding: 0 10px;
+                justify-content: center;
+            }
+
+            .contact-info,
+            .about {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .contact-info h3 {
+                font-size: 16px;
+            }
+
+            .about p {
+                font-size: 13px;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin: 15px 0;
+            }
+
+            .social-icons img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .footer-bottom {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 320px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* HEADER */
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                /* Pindahkan hamburger ke kanan */
+                padding: 10px 14px;
+                position: relative;
+            }
+
+            .header p {
+                padding: 5px 0;
+                font-size: 15px;
+            }
+
+            .header img {
+                height: 50px;
+                width: 50px;
+            }
+
+            /* Navigasi */
+            .nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 150px;
+                background: white;
+                text-align: right;
+                padding: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                z-index: 10;
+                /* Pastikan tetap di atas */
+            }
+
+            /* Pastikan bisa diklik */
+            .nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                position: relative;
+                z-index: 15;
+                /* Naikin z-index */
+            }
+
+            .hamburger {
+                font-size: 24px;
+                cursor: pointer;
+                margin-left: auto;
+                z-index: 2;
+            }
+
+            /* Checkbox Hack */
+            #menu-toggle {
+                display: none;
+            }
+
+            #menu-toggle:checked+.hamburger+.nav {
+                display: block;
+            }
+
+            /* PROMO SECTION */
+            .promo {
+                width: 100%;
+                height: 50vh;
+                /* Kurangi tinggi agar tidak terlalu besar */
+                overflow: hidden;
+            }
+
+            .promo img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .promo-text {
+                width: 95%;
+                left: 2.5%;
+                top: 15%;
+                text-align: center;
+            }
+
+            .promo-text h1 {
+                font-size: 24px;
+            }
+
+            .promo-text p {
+                font-size: 12px;
+            }
+
+            /* KEY FACTS */
+            .content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin: 20px auto;
+                padding: 5px;
+            }
+
+            .content img {
+                display: none;
+                /* Sembunyikan gambar agar lebih rapi */
+            }
+
+            .intimate,
+            .intimate2 {
+                font-size: 18px;
+            }
+
+            .intimate1 {
+                font-size: 12px;
+            }
+
+            .info {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 kolom biar tetap 1 pair */
+                gap: 1px 2px;
+                /* Jarak antar elemen */
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .info1 {
+                font-size: 13px;
+            }
+
+            .info2 {
+                font-size: 13px;
+            }
+
+            /* BACKGROUND */
+            .fuel-section {
+                min-height: 60vh;
+                /* Kurangi agar lebih pas */
+            }
+
+
+            .ngambang {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                max-width: 1300px;
+            }
+
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+
+            }
+
+
+
+            .text h2 {
+                display: flex;
+                position: relative;
+                font-size: 12px;
+                margin-bottom: 10px;
+                text-align: center;
+                line-height: 1.4;
+                width: 100%;
+                font-size: 20px;
+                left: 400;
+
+            }
+
+            .text .sub-text {
+                font-size: 14px;
+                text-align: center;
+                max-width: 90%;
+            }
+
+            /* FLEX WRAP FIX */
+            .footer-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .type-container {
+                display: flexbox;
+                gap: 10px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scroll-padding-left: 5px;
+                scroll-snap-align: start;
+                left: 50%;
+                padding-left: 300px;
+
+            }
+
+            .typenya {
+                scroll-snap-align: start;
+                flex: 0 0 80%;
+                max-width: 250px;
+                scroll-snap-align: start;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .ron {
+                font-size: 16px;
+            }
+
+            /* FOOTER */
+            footer {
+                background: #E5B628;
+                color: #fff;
+                padding: 15px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .footer-container {
+                display: flex;
+                flex-direction: column;
+                /* Biar rapi di mobile */
+                align-items: center;
+                max-width: 100%;
+                padding: 0 5px;
+            }
+
+            .contact-info,
+            .about {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .contact-info h3 {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .about p {
+                font-size: 12px;
+                margin: 0 10px;
+                line-height: 1.5;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin: 10px 0;
+            }
+
+            .social-icons img {
+                width: 25px;
+                height: 25px;
+            }
+
+            .footer-bottom {
+                font-size: 10px;
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.1);
+                width: 100%;
+            }
+
+            .contact-info h3 {
+                font-size: 12px;
+            }
+
+            .about p {
+                font-size: 10px;
+            }
+
+            .social-icons img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .footer-bottom {
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 375px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* HEADER */
+            .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px;
+        position: relative;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    .header img {
+        height: 45px;
+        width: 45px;
+    }
+
+    /* Navigasi */
+    .nav {
+        display: none;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        width: 140px;
+        background: white;
+        text-align: right;
+        padding: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        z-index: 10;
+    }
+
+    .nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        z-index: 15;
+    }
+
+    .hamburger {
+        font-size: 22px;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 2;
+    }
+
+    #menu-toggle {
+        display: none;
+    }
+
+    #menu-toggle:checked+.hamburger+.nav {
+        display: block;
+    }
+
+            /* PROMO SECTION */
+            .promo {
+                height: 55vh;
+            }
+
+            .promo-text {
+                width: 95%;
+                left: 2.5%;
+                top: 18%;
+                text-align: center;
+            }
+
+            .promo-text h1 {
+                font-size: 26px;
+            }
+
+            .promo-text p {
+                font-size: 14px;
+            }
+
+            /* KEY FACTS */
+            .content {
+                flex-direction: column;
+                text-align: center;
+                margin: 24px auto;
+                padding: 8px;
+            }
+
+            .intimate,
+            .intimate2 {
+                font-size: 20px;
+            }
+
+            .intimate1 {
+                font-size: 14px;
+            }
+
+            .info {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4px 6px;
+            }
+
+            .info1,
+            .info2 {
+                font-size: 14px;
+            }
+
+            /* BACKGROUND */
+            .fuel-section {
+                min-height: 65vh;
+            }
+
+            .ngambang {
+                max-width: 100%;
+            }
+
+            .text{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .text h2 {
+                width: 100%;
+                text-align: center;
+                margin-left: 300px;
+            }
+
+            .text .sub-text {
+                font-size: 16px;
+                max-width: 90%;
+            }
+
+            /* TYPE CONTAINER */
+
+            .type-container {
+                display: flex;
+                gap: 10px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scroll-padding-left: 5px;
+                scroll-snap-align: start;
+                padding-left: 70px;
+            }
+
+            .typenya {
+                scroll-snap-align: start;
+                flex: 0 0 75%;
+                max-width: 230px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            }
+
+
+            .ron {
+                font-size: 18px;
+            }
+
+            /* FOOTER */
+            .footer-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-container {
+                padding: 0 8px;
+            }
+
+            .contact-info h3 {
+                font-size: 14px;
+            }
+
+            .about p {
+                font-size: 12px;
+            }
+
+            .social-icons img {
+                width: 22px;
+                height: 22px;
+            }
+
+            .footer-bottom {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img src="image 2.png">
+        <p>WIZZII</p>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">&#9776;</label>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="OUR BRANCH.html">Location</a></li>
+                <li><a href="News.html">News</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </nav>
+        <label for="menu-toggle" class="overlay"></label>
+    </header>
+
+    <section class="promo">
+        <img src="image 1.png">
+        <div class="promo-text">
+            <h1>36 Years</h1>
+            <h2>Striving to be the best</h2>
+            <p>Wizzii's quality fuel and technological expertise with leading-edge innovations that go into every drop.
+            </p>
+        </div>
+    </section>
+
+    <div class="content">
+        <div>
+            <p class="intimate2"> We are already operating in</p>
+            <p class="intimate"> 23 Countries</p>
+            <p class="intimate1">We operate in the most dynamic and vibrant region in the world. Our growth is driven by
+                strong macro fundamentals across Asia.</p>
+            <div>
+                <p class="intimate2">Key Facts</p>
+
+                <div class="info">
+                    <p class="info1">+5.900 people</p>
+                    <p class="info1">2M</p>
+
+                    <p class="info2">Service station</p>
+                    <p class="info2">Customers served daily</p>
+
+                    <p class="info1">23</p>
+                    <p class="info1">24.87 bn</p>
+
+                    <p class="info2">Country Market</p>
+                    <p class="info2">Liters of fuel sold in 2025*</p>
+                </div>
+            </div>
+        </div>
+        <img src="image 4 (1).png">
+    </div>
+
+    <section class="fuel-section">
+        <div class="fuel-bg">
+            <img src="image 6.png">
+        </div>
+
+        <div class="ngambang">
+            <div class="text">
+                <h2>Available Gasoline Packages!</h2>
+                <p class="sub-text">Choose according to your needs!</p>
+            </div>
+
+            <div class="type-container">
+                <div class="typenya">
+                    <div class="type-header">
+                        <div class="type1">Wizzii Regular
+                            <p>RON 89</p>
+                        </div>
+                        <div class="ron">89</div>
+                    </div>
+                    <p>Wizzii Regular (RON 89) is a standard fuel for everyday vehicles with an affordable price and
+                        optimal fuel efficiency for conventional engines.</p>
+                </div>
+
+                <div class="typenya">
+                    <div class="type-header">
+                        <div class="type1">Wizzii Plus
+                            <p>RON 92</p>
+                        </div>
+                        <div class="ron">92</div>
+                    </div>
+                    <p>Wizzii Plus (RON 92) offers higher performance with cleaner combustion and better efficiency for
+                        modern vehicles.</p>
+                </div>
+                <div class="typenya">
+                    <div class="type-header">
+                        <div class="type1">Wizzii Ultimate
+                            <p>RON 95</p>
+                        </div>
+                        <div class="ron">95</div>
+                    </div>
+                    <p>Wizzii Max (RON 95) is designed for high-tech engines, providing more responsive acceleration and
+                        lower emissions</p>
+                </div>
+                <div class="typenya">
+                    <div class="type-header">
+                        <div class="type1">Wizzii Plus
+                            <p>RON 92</p>
+                        </div>
+                        <div class="ron">92</div>
+                    </div>
+                    <p>Wizzii Plus (RON 92) offers higher performance with cleaner combustion and better efficiency for
+                        modern vehicles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>+62 2726 2726 162</p>
+                <p>wizzi.energy@gmail.com</p>
+            </div>
+            <div class="about">
+                <p>Wizzii is an innovative fuel brand that offers a wide range of gasoline and diesel with the latest
+                    technology to meet the needs of modern vehicles. With a focus on efficiency, performance, and
+                    sustainability, Wizzii delivers high-quality fuels designed to provide cleaner combustion, optimal
+                    acceleration, and maintain engine durability for longer. In addition, Wizzii is also committed to
+                    green energy solutions through biofuel variants that reduce carbon emissions without compromising
+                    vehicle performance.</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Wizzii. All Rights Reserved | Powered by Innovation & Sustainability</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

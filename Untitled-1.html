@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WIZZII - For World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        .banner {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 14px;
+        }
+
+        .banner p {
+            font-weight: 700;
+            font-size: 30px;
+            color: #ECC333;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        .promotion {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+
+        .promotion img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .promotion::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .promp-text {
+            position: absolute;
+            top: 25%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            margin-right: auto;
+            color: white;
+            font-size: 52px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .promp-text1 {
+            position: absolute;
+            top: 35%;
+            left: 28%;
+            transform: translate(-50%, -50%);
+            margin-right: auto;
+            color: white;
+            font-size: 52px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .promp-text2 {
+            position: absolute;
+            top: 48%;
+            left: 38%;
+            transform: translate(-50%, -50%);
+            margin-right: auto;
+            color: white;
+            font-size: 24px;
+            z-index: 2;
+        }
+
+        .content {
+            display: flex;
+            position: relative;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 2px;
+            margin-top: 50px;
+            margin-left: 90px;
+            margin-bottom: 90px;
+        }
+
+        .content img {
+            max-width: 70%;
+            height: auto;
+            object-fit: cover;
+            margin-left: auto;
+        }
+
+        .content div {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .intimate2 {
+            font-weight: bold;
+            margin-top: 34px;
+            padding: 3px;
+            font-size: 29px;
+        }
+
+        .intimate {
+            font-size: 40px;
+            margin: 3px;
+            font-weight: bold;
+            padding: auto;
+            color: #ECC333;
+        }
+
+        .intimate1 {
+            font-size: 18px;
+            color: #666;
+            padding: 2px;
+            text-align: justify;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 200px;
+            row-gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            align-items: start;
+        }
+
+
+        .info1 {
+            margin-top: 12px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #ECC333;
+            font-weight: bold;
+            white-space: nowrap;
+
+        }
+
+        .info2 {
+            padding: 2px;
+            margin-right: 20px;
+            border-radius: 8px;
+            text-align: justify;
+            white-space: nowrap;
+        }
+
+        /* buat tipe ron */
+        .ngambang {
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 98%;
+        }
+
+        .ngambang .text {
+            position: absolute;
+            top: 25%;
+            font-weight: bold;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: left;
+            font-size: 24px;
+        }
+
+        .ngambang .text1 {
+            position: absolute;
+            top: 25%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: right;
+            font-size: 20px;
+        }
+
+        /* kotaknya */
+        .type89{
+            position: absolute;
+            top: 60%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            min-width: 280px;
+            max-width: 300px;
+            text-align: justify;
+            color: black;
+            padding: 10px;
+            background-color:  white;
+
+        }
+
+        .type89>p{
+            padding-left: 3px;
+            padding-top: 20px;
+        }
+
+        .type89>div{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .type89>div>div:last-child{
+            background-image: url(Rectangle\ merah.png);
+            background-size: cover;
+            background-position: center;
+            max-height: fit-content;
+            font-size: 25px;
+            color: white;
+            padding: 5px 10px;
+            margin-left: 100px;
+        }
+
+        .type92{
+            position: absolute;
+            top: 60%;
+            left: 41%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            min-width: 280px;
+            max-width: 300px;
+            text-align: justify;
+            color: black;
+            padding: 10px;
+            background-color:  white;
+
+        }
+
+        .type92>p{
+            padding-left: 3px;
+            padding-top: 20px;
+        }
+
+        .type92>div{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .type92>div>div:last-child{
+            background-image: url(Rectangle\ biru.png);
+            background-size: cover;
+            background-position: center;
+            max-height: fit-content;
+            font-size: 25px;
+            color: white;
+            padding: 5px 10px;
+            margin-left: 100px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="image 2.png">
+            <p>WIZZII</p>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li><a href="OUR BRANCH.html">Location</a></li>
+                    <li>News</li>
+                    <li>Other</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="promotion">
+            <img src="image 1.png">
+            <div class="promp-text">36 Years</div>
+            <div class="promp-text1">Striving to be the best</div>
+            <div class="promp-text2">Wizzi's quality fuel and technological expertise with leading-edge innovations
+                that go into every drop.</div>
+        </div>
+
+        <div class="content">
+            <div>
+                <p class="intimate2"> We are already operating in</p>
+                <p class="intimate"> 23 Countries</p>
+                <p class="intimate1">We operate in the most dynamic and vibrant region in the world. Our</p>
+                <p class="intimate1">growth is driven by strong macro fundamentals across Asia.</p>
+                <div>
+                    <p class="intimate2">Key Facts</p>
+
+                    <div class="info">
+                        <p class="info1">+5.900 people</p>
+                        <p class="info1">2M</p>
+
+                        <p class="info2">Service station</p>
+                        <p class="info2">Customers served daily</p>
+
+                        <p class="info1">23</p>
+                        <p class="info1">24.87 bn</p>
+
+                        <p class="info2">Country Market</p>
+                        <p class="info2">Liters of fuel sold in 2025*</p>
+                    </div>
+                </div>
+            </div>
+            <img src="image 4 (1).png">
+        </div>
+
+
+        <div class="promotion">
+            <img src="image 6.png">
+            <div class="ngambang">
+                <div class="text">Available Gasoline Packages!</div>
+                <div class="text1">Choose according to your needs!</div>
+
+                <div class="type-container">
+                    
+                </div>
+                <div class="type89">
+                    <div>
+                        <div class="type1">Wizzii Regular
+                            <p>RON 89</p>
+                        </div>
+                        <div> 89 </div>
+
+                    </div>
+                    <p>Wizzii Regular (RON 89) is a standard fuel for everyday vehicles with affordable price and optimal
+                    fuel efficiency for conventional engines</p>
+
+                </div>
+
+                <div class="type92">
+                    <div>
+                        <div class="type1">Wizzii Plus
+                            <p>RON 92</p>
+                        </div>
+                        <div> 92 </div>
+
+                    </div>
+                    <p>Wizzii Plus (RON 92) offers 
+                        higher performance with cleaner combustion and better efficiency for modern vehicles. </p>
+
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
